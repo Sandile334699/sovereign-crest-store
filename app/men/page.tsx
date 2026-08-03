@@ -86,19 +86,10 @@ export default function MenPage() {
             </p>
 
             <button
-              style={{
-                width: '100%',
-                background: '#C8A24D',
-                color: '#000',
-                border: 'none',
-                padding: '12px 16px',
-                borderRadius: 999,
-                fontWeight: 'bold',
-                cursor: 'pointer',
-              }}
-            >
-              Add to Cart
-            </button>
+              <AddToCartButton
+               name={p.name}
+               price={Number(p.price.replace(/[^0-9]/g, ''))}
+              />
           </div>
         ))}
       </section>
