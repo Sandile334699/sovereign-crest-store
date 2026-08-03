@@ -1,0 +1,69 @@
+'use client';
+
+import { createContext, useContext, useEffect, useState } from 'react';
+
+type CartItem = {
+  name: string;
+  price: number;
+  image?: string;
+  qty: number;
+};
+
+type CartContextType = {
+  items: CartItem[];
+  addItem: (item: Omit<CartItem, 'qty'>) => void;
+  removeItem: (name: string) => void;
+  clearCart: () => void;
+  itemCount: number;
+};
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
+
+export function CartProvider({ children }: { children: React.ReactNode }) {
+  const [items, setItems] = useState<CartItem[]>([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('sovereign-cart');
+    if (saved) setItems(JSON.parse(saved));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('sovereign-cart', JSON.stringify(items));
+  }, [items]);
+
+  const addItem = (item: Omit<CartItem, 'qty'>) => {
+    setItems((prev) => {
+      const existing = prev.find((i) => i.name === item.name);
+      if (existing) {
+        return prev.map((i) =>
+          i.name === item.name ? { ...i, qty: i.qty + 1 } : i
+        );
+      }
+      return [...prev, { ...item, qty: 1 }];
+    });
+  };
+
+  const removeItem = (name: string) => {
+    setItems((prev) => prev.filter((i) => i.name !== name));
+  };
+
+  const clearCart = () => setItems([]);
+
+  const itemCount = items.reduce((sum, item) => sum + item.qty, 0);
+
+  return (
+    <CartContext.Provider
+      value={{ items, addItem, removeItem, clearCart, itemCount }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+}
+
+export function useCart() {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error('useCart must be used inside CartProvider');
+  }
+  return context;
+}
