@@ -1,4 +1,5 @@
-import Link from 'next/link';
+import Link from 'next/link';import AddToCartButton from '../components/AddToCartButton';
+import CartBadge from '../components/CartBadge';
 
 export default function MenPage() {
   const products = [
