@@ -25,12 +25,13 @@ export default function MenPage() {
           👑 SOVEREIGN CREST
         </Link>
 
-        <nav style={{ display: 'flex', gap: 16 }}>
-          <Link href="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
-          <Link href="/women" style={{ color: 'white', textDecoration: 'none' }}>Women</Link>
-          <Link href="/footwear" style={{ color: 'white', textDecoration: 'none' }}>Footwear</Link>
-          <Link href="/accessories" style={{ color: 'white', textDecoration: 'none' }}>Accessories</Link>
-        </nav>
+        <nav style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+  <Link href="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
+  <Link href="/women" style={{ color: 'white', textDecoration: 'none' }}>Women</Link>
+  <Link href="/footwear" style={{ color: 'white', textDecoration: 'none' }}>Footwear</Link>
+  <Link href="/accessories" style={{ color: 'white', textDecoration: 'none' }}>Accessories</Link>
+  <CartBadge />
+</nav>
       </header>
 
       {/* Hero */}
