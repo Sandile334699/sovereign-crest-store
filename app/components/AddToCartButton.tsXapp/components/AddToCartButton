@@ -1,0 +1,31 @@
+'use client';
+
+import { useCart } from '../context/CartContext';
+
+export default function AddToCartButton({
+  name,
+  price,
+}: {
+  name: string;
+  price: number;
+}) {
+  const { addItem } = useCart();
+
+  return (
+    <button
+      onClick={() => addItem({ name, price })}
+      style={{
+        width: '100%',
+        background: '#C8A24D',
+        color: '#000',
+        border: 'none',
+        padding: '12px 16px',
+        borderRadius: 999,
+        fontWeight: 'bold',
+        cursor: 'pointer',
+      }}
+    >
+      Add to Cart
+    </button>
+  );
+}
