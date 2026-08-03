@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { CartProvider } from './context/CartContext';
 
 export const metadata: Metadata = {
   title: 'Sovereign Crest Official',
@@ -20,7 +21,7 @@ export default function RootLayout({
           fontFamily: 'Arial, sans-serif',
         }}
       >
-        {children}
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );
