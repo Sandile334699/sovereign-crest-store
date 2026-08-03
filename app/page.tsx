@@ -25,6 +25,6 @@ export default function Home() {
         <h2>Sovereign Sneaker</h2>
         <p style={{color:'#C8A24D'}}>R1,899</p>
       </div>
-    </main> <SovereignAssistant />
+    </main><SovereignAssistant />
   );
 }
