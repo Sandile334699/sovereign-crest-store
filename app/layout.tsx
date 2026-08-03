@@ -1,3 +1,10 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Sovereign Crest Official',
+  description: 'Luxury Streetwear • Wear the Crown. Rule the Streets.',
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -5,7 +12,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body
+        style={{
+          margin: 0,
+          background: '#0B0B0B',
+          color: 'white',
+          fontFamily: 'Arial, sans-serif',
+        }}
+      >
+        {children}
+      </body>
     </html>
   );
 }
